@@ -1,7 +1,7 @@
 <suite name="Buy">
     <test name="testando">
         <classes>
-            <class name="BuyTests"/>
+            <class name="shopping.BuyTests"/>
         </classes>
     </test>
 </suite>

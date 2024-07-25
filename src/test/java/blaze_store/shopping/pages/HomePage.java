@@ -1,11 +1,14 @@
-package shopping.pages;
+package blaze_store.shopping.pages;
 
+import blaze_store.TestClassBase;
+import blaze_store.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage{
+public class HomePage {
 
     WebDriver webDriver;
+    Utils utils = new Utils(webDriver);
     By header = By.id("nava");
     By monitorCategory = By.cssSelector("a[onclick=\"byCat('monitor')\"]");
     By phoneCategory = By.cssSelector("a[onclick=\"byCat('phonr')\"]");
@@ -26,7 +29,7 @@ public class HomePage{
     }
 
     public void selectFirstShopItem() throws InterruptedException {
-        Thread.sleep(3000);
+        utils.dummySleep(2);
         var item = webDriver.findElements(shopItems);
         item.getFirst().click();
     }

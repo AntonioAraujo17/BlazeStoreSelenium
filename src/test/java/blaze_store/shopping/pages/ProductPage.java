@@ -1,5 +1,6 @@
 package shopping.pages;
 
+import blaze_store.Utils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,16 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductPage {
+public class ProductPage{
 
     WebDriver webDriver;
+
     By addToCartButton = By.cssSelector("a[onclick='addToCart(10)']");
     By priceText = By.className("price-container");
+
 
     public ProductPage(WebDriver webDriver){
         this.webDriver = webDriver;
     }
-
 
     public void clickAddToCart() {
         webDriver.findElement(addToCartButton).click();
@@ -38,5 +40,7 @@ public class ProductPage {
     public String getProductPrice(){
         return webDriver.findElement(priceText).getText().substring(0,4);
     }
+
+
 
 }
