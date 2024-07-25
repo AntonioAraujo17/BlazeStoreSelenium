@@ -32,7 +32,7 @@ public class BuyTests extends TestClassBase{
     }
 
     @Test
-    void test_userOrderOneProduct() throws InterruptedException {
+    void test_LoggedCustomerMakesPurchaseSuccessfully() throws InterruptedException {
         homePage.verifyHeader();
         homePage.clickMonitorCategory();
         homePage.selectFirstShopItem();
@@ -50,5 +50,13 @@ public class BuyTests extends TestClassBase{
 
     }
 
+    @Test
+    void test_NonLoggedCustomerMakesPurchaseSuccessfully(){}
+
+    @Test
+    void test_CustomerWithMultipleItemsMakesPurchaseSuccessfully(){}
+
+    @Test
+    void test_CustomerRemovesItemFromTheCart(){}
 
 }
