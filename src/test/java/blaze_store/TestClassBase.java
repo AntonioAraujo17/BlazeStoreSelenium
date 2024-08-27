@@ -20,6 +20,7 @@ public class  TestClassBase {
 
         chromeDriver = new ChromeDriver(options);
         driverManage = chromeDriver.manage();
+        driverManage.window().maximize();
         driverManage.timeouts().implicitlyWait(Duration.ofSeconds(10));
 
          return chromeDriver;

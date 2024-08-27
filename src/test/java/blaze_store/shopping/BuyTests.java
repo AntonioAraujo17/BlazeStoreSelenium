@@ -1,6 +1,7 @@
 package blaze_store.shopping;
 
 import blaze_store.TestClassBase;
+import blaze_store.shopping.pages.SignInSignUpPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -10,14 +11,13 @@ import blaze_store.shopping.pages.CartPage;
 import blaze_store.shopping.pages.HomePage;
 import shopping.pages.ProductPage;
 
-
-
 public class BuyTests {
 
     TestClassBase testClassBase = new TestClassBase();
     HomePage homePage;
     ProductPage productPage;
     CartPage cartPage;
+    SignInSignUpPage signInSignUpPage;
     ChromeDriver driver;
 
 
@@ -29,6 +29,7 @@ public class BuyTests {
         homePage = new HomePage(driver);
         productPage = new ProductPage(driver);
         cartPage = new CartPage(driver);
+        signInSignUpPage = new SignInSignUpPage(driver);
         driver.get("https://www.demoblaze.com/index.html");
     }
 
@@ -38,7 +39,7 @@ public class BuyTests {
     }
 
     @Test
-    void test_NonLoggedCustomerMakesPurchaseSuccessfully() throws InterruptedException {
+    void test_NonLoggedCustomerMakesPurchaseSuccessfully() {
         homePage.verifyHeader();
         homePage.clickMonitorCategory();
         homePage.selectFirstShopItem();
@@ -55,10 +56,18 @@ public class BuyTests {
         cartPage.clickPlaceOrder();
         cartPage.fillPlaceOrderFields();
 
+        var normalizedValue = "$"+cartPage.getAmount();
+        Assert.assertEquals(normalizedValue, productValue);
     }
 
     @Test
-    void test_LoggedCustomerMakesPurchaseSuccessfully(){}
+    void test_LoggedCustomerMakesPurchaseSuccessfully(){
+        homePage.verifyHeader();
+
+        homePage.clickLogInLink();
+        signInSignUpPage.inputLoginCredentials("testAntonio123", "123456");
+
+    }
 
     @Test
     void test_CustomerWithMultipleItemsMakesPurchaseSuccessfully(){}
